@@ -58,8 +58,8 @@ function App() {
             <input
               type="text"
               className="modal__input"
-              id="name"
-              placeholder="Name"
+              id="imageUrl"
+              placeholder="Image URL"
             />
           </label>
           <label htmlFor="imageUrl" className="modal__label">
@@ -97,9 +97,11 @@ function App() {
           </fieldset>
         </ModalWithForm>
       )}
-      {activeModal === "preview" && (
-        <ItemModal card={selectedCard} onClose={closeActiveModal} />
-      )}
+      <ItemModal
+        activeModal={activeModal}
+        card={selectedCard}
+        onClose={closeActiveModal}
+      />
     </div>
   );
 }
