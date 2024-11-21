@@ -19,7 +19,8 @@
 }
 
 .modal__close_item {
-  background-image: url("../../assets/Form\ Modal\ Close\ Button.png");
+  background-image: url(../../assets/modal-close-btn.png);
+  color: antiquewhite;
 }
 
 .modal__image {
