@@ -1,25 +1,52 @@
 .header {
   display: flex;
   align-items: center;
-  padding: 32px 0 28px;
+  padding: 32px 0 38px 0;
 }
 
 .header__logo {
   margin-right: 24px;
 }
 
+.header__add-clothes-btn {
+  margin: 0;
+  border: none;
+  font-family: "Cabinet-Grotesk Bold";
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  background: transparent;
+}
+
 .header__date-and-location {
   margin: 0;
+  font-family: "Cabinet Grotesk Bold";
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  white-space: nowrap;
 }
 
 .header__add-clothes-btn {
   margin: 0 20px 0 auto;
+  background-color: rgba(255, 255, 255, 1);
+  font-family: "Cabinet Grotexk Bold";
+  line-height: 24px;
+  font-weight: 700;
+  font-size: 20px;
 }
 
 .header__user-container {
   display: flex;
   align-items: center;
   gap: 12px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  font-family: "Cabinet Grotesk Bold";
 }
 
 .header__username {

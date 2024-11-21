@@ -3,12 +3,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "CabinetGrotesk";
+  min-height: 100vh;
 }
 
 .page__content {
   max-width: 1360px;
   margin: 0 auto;
+  font-family: "Cabinet Grotesk";
   padding: 0 20px;
   font-size: 20px;
 }

@@ -1,5 +1,7 @@
 .modal {
   position: fixed;
+  width: 100%;
+  height: 100%;
   top: 0;
   left: 0;
   right: 0;
@@ -16,13 +18,34 @@
 }
 
 .modal__title {
-  margin: 0;
+  margin: 0 0 24px 0;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 700;
 }
 
 .modal__close {
   position: absolute;
   top: 20px;
   right: 28px;
+  background-image: url(../../assets/Modal\ Image\ Close\ Button.png);
+  border: none;
+  height: 16px;
+  width: 16px;
+  cursor: pointer;
+  background-color: pink;
+}
+
+.modal__submit-button {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  border: 1px solid white;
+  border-radius: 4px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 8px 13px;
+  align-self: flex-start;
 }
 
 .modal__content {
@@ -32,6 +55,7 @@
   max-width: 496px;
   box-sizing: border-box;
   width: 100%;
+  border-radius: 16px;
 }
 
 .modal__form {
@@ -42,6 +66,11 @@
 
 .modal__input {
   display: block;
+  margin: 3px 0 24px;
+  border: none;
+  border-bottom: 1px solid #000;
+  width: 100%;
+  border-bottom: 1px solid #000;
 }
 
 .modal__radio-buttons {
@@ -49,4 +78,6 @@
   padding: 0;
   display: flex;
   flex-direction: column;
+  gap: 8px;
+  margin-bottom: 32px;
 }
