@@ -126,11 +126,12 @@
 }
 
 .modal__label_type_radio {
-  margin-bottom: 8px;
   font-family: "Cabinet Grotesk Bold";
   font-size: 16px;
   line-height: 20px;
+  margin-bottom: 8px;
   color: rgba(0, 0, 0, 0.5);
+  transition: color 0.3s ease;
 }
 
 .modal__label_type_radio:last-child {
@@ -141,7 +142,7 @@
   margin-right: 8px;
 }
 
-.modal__radio-input:checked ~ label {
+.modal__radio-input:checked ~ span {
   color: rgba(0, 0, 0, 1);
 }
 
