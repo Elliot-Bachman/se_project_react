@@ -47,7 +47,7 @@ function App() {
         setWeatherData(filteredData);
       })
       .catch(console.error);
-  }, [weatherData, currentTemperatureUnit]);
+  }, []); // Dependency array is left empty to avoid unnecessary reruns
 
   return (
     <div className="page">

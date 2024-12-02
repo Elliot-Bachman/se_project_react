@@ -10,6 +10,11 @@ export const getWeather = ({ latitude, longitude }, APIkey) => {
   });
 };
 
+const toCelsius = (temp) => {
+  const cel = Math.round(((temp - 32) * 5) / 9);
+  return cel;
+};
+
 export const filterWeatherData = (data) => {
   const result = {};
   result.city = data.name;
