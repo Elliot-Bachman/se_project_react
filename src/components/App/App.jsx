@@ -33,7 +33,7 @@ function App() {
   };
 
   const handleToggleSwitchChange = () => {
-    setCurrentTemperatureUnit((prevUnit) => (prevUnit === "C" ? "F" : "C"));
+    setCurrentTemperatureUnit((prevUnit) => (prevUnit === "F" ? "C" : "F"));
   };
 
   useEffect(() => {
@@ -44,6 +44,7 @@ function App() {
     getWeather(coordinates, APIkey)
       .then((data) => {
         const filteredData = filterWeatherData(data);
+        console.log("Filtered Weather Data:", filteredData);
         setWeatherData(filteredData);
       })
       .catch(console.error);

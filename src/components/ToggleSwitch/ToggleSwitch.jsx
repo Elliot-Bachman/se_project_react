@@ -12,6 +12,7 @@ const ToggleSwitch = () => {
       <input
         type="checkbox"
         className="switch__box"
+        checked={currentTemperatureUnit === "C"} // Checked when in Celsius
         onChange={handleToggleSwitchChange}
       />
       <span
