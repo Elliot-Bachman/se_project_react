@@ -1,14 +1,23 @@
 .switch {
   display: flex;
+  align-items: center;
   position: relative;
 }
 
 .switch__box {
   border-radius: 25px;
   border: 2px solid black;
-  width: 50px;
+  width: 58px;
   height: 30px;
   appearance: none;
+}
+
+.switch__box:hover {
+  border: 2px solid rgba(0, 0, 0, 1);
+}
+
+.switch__box:hover ~ .switch__temp-F {
+  color: rgba(0, 0, 0, 1);
 }
 
 .switch__slider {
