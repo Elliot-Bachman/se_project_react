@@ -2,10 +2,9 @@ import "./Main.css";
 import { useContext } from "react";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import WeatherCard from "../WeatherCard/WeatherCard";
-import { defaultClothingItems } from "../../utils/constants";
 import ItemCard from "../ItemCard/ItemCard";
 
-function Main({ weatherData, handleCardClick }) {
+function Main({ weatherData, clothingItems, handleCardClick }) {
   // Subscribe to the temperature unit context
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
@@ -18,19 +17,14 @@ function Main({ weatherData, handleCardClick }) {
           {currentTemperatureUnit}. You may want to wear:
         </p>
         <ul className="cards__list">
-          {defaultClothingItems
-            .filter((item) => {
-              return item.weather === weatherData.type;
-            })
-            .map((item) => {
-              return (
-                <ItemCard
-                  key={item._id}
-                  item={item}
-                  onCardClick={handleCardClick}
-                />
-              );
-            })}
+          {/* Map over clothingItems to render dynamically added items */}
+          {clothingItems.map((item, index) => (
+            <ItemCard
+              key={index} // Use index as a fallback key (unique keys are better)
+              item={item}
+              onCardClick={handleCardClick}
+            />
+          ))}
         </ul>
       </section>
     </main>

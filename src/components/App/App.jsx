@@ -11,13 +11,20 @@ import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperature
 import AddItemModal from "../AddItemModal/AddItemModal";
 
 function App() {
+  // State for weather data
   const [weatherData, setWeatherData] = useState({
     type: "",
     temp: { F: 999 },
     city: "",
   });
+
+  // State for modals
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
+
+  // State for clothing items
+  const [clothingItems, setClothingItems] = useState([]);
+
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
   const handleCardClick = (card) => {
@@ -37,8 +44,10 @@ function App() {
     setCurrentTemperatureUnit((prevUnit) => (prevUnit === "F" ? "C" : "F"));
   };
 
-  const onAddItem = (values) => {
-    console.log(values);
+  const handleAddItemSubmit = (item) => {
+    console.log("Adding item:", item); // Debugging log
+    setClothingItems([item, ...clothingItems]); // Add the new item to the array
+    closeActiveModal(); // Close the modal after submission
   };
 
   useEffect(() => {
@@ -61,36 +70,33 @@ function App() {
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
         <div className="page__content">
-          {console.log("Rendering Header")}
           <Header handleAddClick={handleAddClick} weatherData={weatherData} />
-          {console.log("Rendering Main")}
-
-          {/* Routes configuration */}
           <Routes>
             <Route
               path="/"
               element={
                 <Main
                   weatherData={weatherData}
+                  clothingItems={clothingItems} // Pass items to Main
                   handleCardClick={handleCardClick}
                 />
               }
             />
             <Route path="/profile" element={<p>PROFILE</p>} />
           </Routes>
-
-          {/* Footer should be outside of Routes */}
           <Footer />
         </div>
 
-        {/* Modals */}
+        {/* AddItemModal */}
         {activeModal === "add-garment" && (
           <AddItemModal
             closeActiveModal={closeActiveModal}
             activeModal={activeModal}
-            onAddItem={onAddItem}
+            onAddItem={handleAddItemSubmit} // Use the new submit handler
           />
         )}
+
+        {/* ItemModal */}
         <ItemModal
           activeModal={activeModal}
           card={selectedCard}
