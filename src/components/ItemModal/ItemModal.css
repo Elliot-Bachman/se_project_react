@@ -43,3 +43,15 @@
 .modal__weather {
   margin: 0;
 }
+
+.modal__delete {
+  font-family: "Cabinet Grotesk Bold";
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: rgba(255, 77, 0, 1);
+  padding: 0;
+  margin: 0 32px 0 auto;
+  background: none;
+  border: none;
+}

@@ -10,7 +10,7 @@ import Footer from "../Footer/Footer";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
-import { getItems } from "../../utils/api";
+import { getItems, deleteItem } from "../../utils/api";
 
 function App() {
   // State for weather data
@@ -52,6 +52,17 @@ function App() {
     closeActiveModal(); // Close the modal after submission
   };
 
+  const handleDeleteItem = (itemToDelete) => {
+    deleteItem(itemToDelete._id) // Call the API to delete the item
+      .then(() => {
+        setClothingItems((prevItems) =>
+          prevItems.filter((item) => item._id !== itemToDelete._id)
+        );
+        closeActiveModal(); // Close the modal
+      })
+      .catch(console.error); // Handle errors
+  };
+
   useEffect(() => {
     console.log("App Component Rendered");
     console.log("Weather Data:", weatherData);
@@ -64,7 +75,7 @@ function App() {
         setWeatherData(filteredData);
       })
       .catch(console.error);
-  }, []); // Dependency array is left empty to avoid unnecessary reruns
+  }, []); // Leave this empty to avoid unnecessary reruns
 
   useEffect(() => {
     getItems()
@@ -121,6 +132,7 @@ function App() {
           activeModal={activeModal}
           card={selectedCard}
           onClose={closeActiveModal}
+          handleDeleteClick={handleDeleteItem}
         />
       </CurrentTemperatureUnitContext.Provider>
     </div>

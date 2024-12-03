@@ -11,4 +11,11 @@ function getItems() {
   return fetch(`${baseUrl}/items`).then(checkRes);
 }
 
-export { getItems };
+function deleteItem(itemId) {
+  console.log(`Deleting item with _id: ${itemId}`); // Debug log
+  return fetch(`${baseUrl}/items/${itemId}`, {
+    method: "DELETE",
+  }).then(checkRes);
+}
+
+export { getItems, deleteItem };
