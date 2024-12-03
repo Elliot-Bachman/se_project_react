@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import { coordinates, APIkey } from "../../utils/constants";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import Footer from "../Footer/Footer";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
+import AddItemModal from "../AddItemModal/AddItemModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -36,6 +37,10 @@ function App() {
     setCurrentTemperatureUnit((prevUnit) => (prevUnit === "F" ? "C" : "F"));
   };
 
+  const onAddItem = (values) => {
+    console.log(values);
+  };
+
   useEffect(() => {
     console.log("App Component Rendered");
     console.log("Weather Data:", weatherData);
@@ -59,67 +64,32 @@ function App() {
           {console.log("Rendering Header")}
           <Header handleAddClick={handleAddClick} weatherData={weatherData} />
           {console.log("Rendering Main")}
-          <Main weatherData={weatherData} handleCardClick={handleCardClick} />
-          {console.log("Rendering Footer")}
+
+          {/* Routes configuration */}
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Main
+                  weatherData={weatherData}
+                  handleCardClick={handleCardClick}
+                />
+              }
+            />
+            <Route path="/profile" element={<p>PROFILE</p>} />
+          </Routes>
+
+          {/* Footer should be outside of Routes */}
           <Footer />
         </div>
+
+        {/* Modals */}
         {activeModal === "add-garment" && (
-          <ModalWithForm
-            title="New garment"
-            buttonText="Add garment"
-            isOpen={activeModal === "add-garment"}
-            onClose={closeActiveModal}
-          >
-            <label className="modal__label">
-              Name
-              <input type="text" className="modal__input" placeholder="Name" />
-            </label>
-
-            <label className="modal__label">
-              Image
-              <input
-                type="text"
-                className="modal__input"
-                placeholder="Image URL"
-              />
-            </label>
-
-            <fieldset className="modal__radio-buttons">
-              <legend className="modal__legend">
-                Select the weather type:
-              </legend>
-
-              <label className="modal__label modal__label_type_radio">
-                <input
-                  id="hot"
-                  type="radio"
-                  name="weather"
-                  className="modal__radio-input"
-                />
-                <span>Hot</span>
-              </label>
-
-              <label className="modal__label modal__label_type_radio">
-                <input
-                  id="warm"
-                  type="radio"
-                  name="weather"
-                  className="modal__radio-input"
-                />
-                <span>Warm</span>
-              </label>
-
-              <label className="modal__label modal__label_type_radio">
-                <input
-                  id="cold"
-                  type="radio"
-                  name="weather"
-                  className="modal__radio-input"
-                />
-                <span>Cold</span>
-              </label>
-            </fieldset>
-          </ModalWithForm>
+          <AddItemModal
+            closeActiveModal={closeActiveModal}
+            activeModal={activeModal}
+            onAddItem={onAddItem}
+          />
         )}
         <ItemModal
           activeModal={activeModal}
