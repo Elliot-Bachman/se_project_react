@@ -9,7 +9,7 @@ function Main({ weatherData, clothingItems, handleCardClick }) {
 
   // Filter items based on weather type
   const filteredItems = clothingItems.filter(
-    (item) => item.weather === weatherData.type
+    (item) => item.weather.toLowerCase() === weatherData.type.toLowerCase()
   );
 
   return (
@@ -21,8 +21,12 @@ function Main({ weatherData, clothingItems, handleCardClick }) {
           {currentTemperatureUnit}. You may want to wear:
         </p>
         <ul className="cards__list">
-          {filteredItems.map((item, index) => (
-            <ItemCard key={index} item={item} onCardClick={handleCardClick} />
+          {filteredItems.map((item) => (
+            <ItemCard
+              key={item._id}
+              item={item}
+              onCardClick={handleCardClick}
+            />
           ))}
         </ul>
       </section>

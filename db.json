@@ -1,18 +1,6 @@
 {
   "items": [
     {
-      "_id": 2,
-      "name": "Cap",
-      "weather": "hot",
-      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Cap.png?etag=f3dad389b22909cafa73cff9f9a3d591"
-    },
-    {
-      "_id": 8,
-      "name": "Loafers",
-      "weather": "warm",
-      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Loafers.png?etag=dc2d6e1ca7b297597406e35c40aef030"
-    },
-    {
       "_id": 9,
       "name": "Sandals",
       "weather": "hot",
@@ -47,6 +35,95 @@
       "name": "Sweatshirt",
       "weather": "warm",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Sweatshirt.png?etag=008a9674757bea2e0bdb31242e364be0"
+    },
+    {
+      "name": "dasfads",
+      "imageUrl": "asfdsad",
+      "weather": "warm",
+      "_id": 16
+    },
+    {
+      "name": "asdfasf",
+      "imageUrl": "asdf",
+      "weather": "warm",
+      "_id": 17
+    },
+    {
+      "name": "sdfasdfasf",
+      "imageUrl": "dasfasdf",
+      "weather": "warm",
+      "_id": 18
+    },
+    {
+      "name": "asdfasf",
+      "imageUrl": "asdfasfd",
+      "weather": "warm",
+      "_id": 19
+    },
+    {
+      "name": "asfasdf",
+      "weather": "hot",
+      "_id": 20
+    },
+    {
+      "name": "sdadfaf",
+      "weather": "hot",
+      "_id": 21
+    },
+    {
+      "name": "safdasf",
+      "weather": "hot",
+      "_id": 22
+    },
+    {
+      "name": "asdfsf",
+      "weather": "cold",
+      "_id": 24
+    },
+    {
+      "name": "fsadfas",
+      "weather": "hot",
+      "_id": 25
+    },
+    {
+      "name": "fsdfs",
+      "weather": "hot",
+      "_id": 26
+    },
+    {
+      "name": "fasdfasdf",
+      "weather": "cold",
+      "_id": 27
+    },
+    {
+      "name": "elliot",
+      "weather": "warm",
+      "_id": 28
+    },
+    {
+      "name": "gfadasdf",
+      "weather": "hot",
+      "_id": 29
+    },
+    {
+      "name": "asdfasdf",
+      "weather": "cold",
+      "_id": 30
+    },
+    {
+      "name": "fasdasdf",
+      "weather": "warm",
+      "_id": 31
+    },
+    {
+      "name": "fddf",
+      "weather": "warm",
+      "_id": 32
+    },
+    {
+      "name": "asdasda",
+      "weather": "hot",
+      "_id": 33
     }
   ]
 }

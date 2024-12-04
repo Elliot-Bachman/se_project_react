@@ -4,6 +4,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 const AddItemModal = ({ closeActiveModal, onAddItem, activeModal }) => {
   const [name, setName] = useState("");
   const [link, setUrl] = useState("");
+  const [weather, setWeather] = useState("warm"); // Default to warm
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -13,9 +14,13 @@ const AddItemModal = ({ closeActiveModal, onAddItem, activeModal }) => {
     setUrl(e.target.value);
   };
 
+  const handleWeatherChange = (e) => {
+    setWeather(e.target.value);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddItem({ name, link });
+    onAddItem({ name, link, weather });
     closeActiveModal(); // Close the modal after submission
   };
 
@@ -54,30 +59,33 @@ const AddItemModal = ({ closeActiveModal, onAddItem, activeModal }) => {
 
         <label className="modal__label modal__label_type_radio">
           <input
-            id="hot"
             type="radio"
             name="weather"
-            className="modal__radio-input"
+            value="hot"
+            checked={weather === "hot"}
+            onChange={handleWeatherChange}
           />
           <span>Hot</span>
         </label>
 
         <label className="modal__label modal__label_type_radio">
           <input
-            id="warm"
             type="radio"
             name="weather"
-            className="modal__radio-input"
+            value="warm"
+            checked={weather === "warm"}
+            onChange={handleWeatherChange}
           />
           <span>Warm</span>
         </label>
 
         <label className="modal__label modal__label_type_radio">
           <input
-            id="cold"
             type="radio"
             name="weather"
-            className="modal__radio-input"
+            value="cold"
+            checked={weather === "cold"}
+            onChange={handleWeatherChange}
           />
           <span>Cold</span>
         </label>

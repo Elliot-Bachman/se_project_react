@@ -1,6 +1,5 @@
-import { defaultClothingItems } from "../../utils/constants";
 import "./ClothesSection.css";
-import ItemCard from "../ItemCard/ItemCard"; // Import the missing ItemCard component
+import ItemCard from "../ItemCard/ItemCard";
 
 function ClothesSection({ handleAddClick, clothingItems, handleCardClick }) {
   return (
@@ -16,12 +15,8 @@ function ClothesSection({ handleAddClick, clothingItems, handleCardClick }) {
         </button>
       </div>
       <ul className="clothes-section__items">
-        {defaultClothingItems.map((item, index) => (
-          <ItemCard
-            key={index} // Use index as a fallback key (unique keys are better)
-            item={item}
-            onCardClick={handleCardClick}
-          />
+        {clothingItems.map((item) => (
+          <ItemCard key={item._id} item={item} onCardClick={handleCardClick} />
         ))}
       </ul>
     </div>

@@ -10,7 +10,7 @@ import Footer from "../Footer/Footer";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
-import { getItems, deleteItem } from "../../utils/api";
+import { getItems, deleteItem, postItem } from "../../utils/api";
 
 function App() {
   // State for weather data
@@ -47,9 +47,21 @@ function App() {
   };
 
   const handleAddItemSubmit = (item) => {
-    console.log("Adding item:", item); // Debugging log
-    setClothingItems([item, ...clothingItems]); // Add the new item to the array
-    closeActiveModal(); // Close the modal after submission
+    const newItem = {
+      name: item.name,
+      imageUrl: item.imageUrl, // Use `imageUrl` as per db.json
+      weather: item.weather.toLowerCase(), // Add logic for selecting weather dynamically if required
+    };
+
+    postItem(newItem)
+      .then((savedItem) => {
+        setClothingItems([savedItem, ...clothingItems]); // Add the saved item
+        console.log("Item successfully added:", savedItem); // Debugging log
+        closeActiveModal(); // Close the modal
+      })
+      .catch((error) => {
+        console.error("Error adding item:", error); // Log errors
+      });
   };
 
   const handleDeleteItem = (itemToDelete) => {
@@ -80,7 +92,7 @@ function App() {
   useEffect(() => {
     getItems()
       .then((data) => {
-        console.log(data);
+        console.log("Fetched items from server:", data);
         setClothingItems(data);
       })
       .catch(console.error);
