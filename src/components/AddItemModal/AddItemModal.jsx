@@ -20,6 +20,7 @@ const AddItemModal = ({ closeActiveModal, onAddItem, activeModal }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("Submitting item:", { name, link, weather }); // Debugging log
     onAddItem({ name, link, weather });
     closeActiveModal(); // Close the modal after submission
   };

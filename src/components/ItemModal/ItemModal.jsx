@@ -9,8 +9,9 @@ function ItemModal({ activeModal, onClose, card, handleDeleteClick }) {
           type="button"
           className="modal__close"
         ></button>
+        {/* Fixed image source */}
         <img
-          src={card?.link || ""}
+          src={card?.imageUrl || ""}
           alt={card?.name || "Card"}
           className="modal__image"
         />
