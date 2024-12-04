@@ -20,7 +20,9 @@ function Header({ handleAddClick, weatherData }) {
           {currentDate}, {weatherData?.city || "Unknown Location"}
         </p>
       </div>
-      <ToggleSwitch />
+      <div className="header__switch">
+        <ToggleSwitch />
+      </div>
       <button
         onClick={handleAddClick}
         type="button"

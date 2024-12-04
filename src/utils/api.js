@@ -11,6 +11,14 @@ function getItems() {
   return fetch(`${baseUrl}/items`).then(checkRes);
 }
 
+function postItem(item) {
+  return fetch(`${baseUrl}/items`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(item),
+  }).then(checkRes);
+}
+
 function deleteItem(itemId) {
   console.log(`Deleting item with _id: ${itemId}`); // Debug log
   return fetch(`${baseUrl}/items/${itemId}`, {
@@ -18,4 +26,4 @@ function deleteItem(itemId) {
   }).then(checkRes);
 }
 
-export { getItems, deleteItem };
+export { getItems, deleteItem, postItem };

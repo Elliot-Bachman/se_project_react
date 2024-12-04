@@ -46,6 +46,12 @@
   font-family: "Cabinet Grotesk Bold";
 }
 
+.header__switch {
+  flex: 1;
+  display: flex;
+  justify-content: end;
+}
+
 .header__username {
   margin: 0;
 }

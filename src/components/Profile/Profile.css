@@ -1,8 +1,12 @@
 .profile {
   display: flex;
-  gap: 100px;
+  gap: 114px;
+  flex-direction: row;
 }
 
 .profile__sidebar {
-  margin-right: 118px;
+}
+
+.profile__clothing-items {
+  width: 1016px;
 }
