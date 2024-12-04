@@ -49,7 +49,7 @@ function App() {
   const handleAddItemSubmit = (item) => {
     const newItem = {
       name: item.name,
-      imageUrl: item.imageUrl, // Use `imageUrl` as per db.json
+      imageUrl: item.link, // Use `imageUrl` as per db.json
       weather: item.weather.toLowerCase(), // Add logic for selecting weather dynamically if required
     };
 

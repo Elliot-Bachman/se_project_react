@@ -7,8 +7,9 @@ function checkRes(response) {
   return response.json();
 }
 
-function getItems() {
-  return fetch(`${baseUrl}/items`).then(checkRes);
+function getItems(weatherType) {
+  const query = weatherType ? `?weather_like=${weatherType}` : "";
+  return fetch(`${baseUrl}/items${query}`).then(checkRes);
 }
 
 function postItem(item) {

@@ -7,10 +7,23 @@ import ItemCard from "../ItemCard/ItemCard";
 function Main({ weatherData, clothingItems, handleCardClick }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
+  // Debugging: Log weatherData.type and clothing items
+  console.log("Weather Data Type:", weatherData.type);
+  console.log("Clothing Items:", clothingItems);
+
   // Filter items based on weather type
-  const filteredItems = clothingItems.filter(
-    (item) => item.weather.toLowerCase() === weatherData.type.toLowerCase()
-  );
+  const filteredItems = clothingItems.filter((item) => {
+    console.log(
+      `Filtering item: ${item.name}, item.weather: ${item.weather}, weatherData.type: ${weatherData.type}`
+    );
+    return (
+      item.weather &&
+      item.weather.toLowerCase() === weatherData.type.toLowerCase()
+    );
+  });
+
+  // Debugging: Log the filtered items
+  console.log("Filtered Items:", filteredItems);
 
   return (
     <main>
