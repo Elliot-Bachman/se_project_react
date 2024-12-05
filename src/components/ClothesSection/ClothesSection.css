@@ -1,5 +1,10 @@
 .clothes-section__title-button {
+  all: unset;
   display: flex;
+  flex-direction: row; /* Align children in a row */
+  align-items: center; /* Vertically align items */
+  justify-content: flex-start;
+  gap: 20px; /* Add spacing between the header and button */
   margin-bottom: 16px;
 }
 

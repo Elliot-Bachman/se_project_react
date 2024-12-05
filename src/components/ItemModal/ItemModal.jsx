@@ -16,22 +16,24 @@ function ItemModal({ activeModal, onClose, card, handleDeleteClick }) {
           className="modal__image"
         />
         <div className="modal__footer">
-          <h2 className="modal__caption">{card?.name || "No Name"}</h2>
-          <p className="modal__weather">
-            Weather: {card?.weather || "Unknown"}
-          </p>
+          <div className="modal__description">
+            <h2 className="modal__caption">{card?.name || "No Name"}</h2>
+            <p className="modal__weather">
+              Weather: {card?.weather || "Unknown"}
+            </p>
+          </div>
+          {/* Add delete button */}
+          <button
+            type="button"
+            className="modal__delete"
+            onClick={() => {
+              console.log("Deleting card:", card);
+              handleDeleteClick(card);
+            }}
+          >
+            Delete item
+          </button>
         </div>
-        {/* Add delete button */}
-        <button
-          type="button"
-          className="modal__delete"
-          onClick={() => {
-            console.log("Deleting card:", card);
-            handleDeleteClick(card);
-          }}
-        >
-          Delete item
-        </button>
       </div>
     </div>
   );
