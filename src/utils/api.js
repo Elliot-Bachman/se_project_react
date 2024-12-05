@@ -27,4 +27,4 @@ function deleteItem(itemId) {
   }).then(checkRes);
 }
 
-export { getItems, deleteItem, postItem };
+export { getItems, deleteItem, postItem, checkRes };
