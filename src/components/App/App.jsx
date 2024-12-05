@@ -42,6 +42,22 @@ function App() {
     setActiveModal("");
   };
 
+  useEffect(() => {
+    if (!activeModal) return; // Stop the effect if there is no active modal
+
+    const handleEscClose = (e) => {
+      if (e.key === "Escape") {
+        closeActiveModal(); // Use the existing function to close the modal
+      }
+    };
+
+    document.addEventListener("keydown", handleEscClose);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscClose);
+    };
+  }, [activeModal]); // Dependency on activeModal
+
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit((prevUnit) => (prevUnit === "F" ? "C" : "F"));
   };
