@@ -30,7 +30,7 @@ function ItemModal({ activeModal, onClose, card, handleDeleteClick }) {
             handleDeleteClick(card);
           }}
         >
-          Delete
+          Delete item
         </button>
       </div>
     </div>
