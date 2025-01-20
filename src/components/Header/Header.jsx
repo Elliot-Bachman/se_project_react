@@ -1,14 +1,23 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
 import "./Header.css";
 import logo from "../../assets/logo.svg";
-import avatar from "../../assets/Avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function Header({ handleAddClick, weatherData }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
   });
+
+  // Access current user data from context
+  const currentUser = useContext(CurrentUserContext);
+
+  // Function to get the first letter of the user's name
+  const getInitials = (name) => {
+    return name ? name.charAt(0).toUpperCase() : "";
+  };
 
   return (
     <header className="header">
@@ -32,8 +41,20 @@ function Header({ handleAddClick, weatherData }) {
       </button>
       <Link to="/profile" className="header__link">
         <div className="header__user-container">
-          <p className="header__user-name">Terrence Tegegne</p>
-          <img src={avatar} alt="Terrence Tegegne" className="header__avatar" />
+          <p className="header__user-name">
+            {currentUser?.name || "Guest"} {/* Use current user data */}
+          </p>
+          {currentUser?.avatar ? (
+            <img
+              src={currentUser.avatar} // Use user's avatar if available
+              alt={currentUser?.name || "Guest"}
+              className="header__avatar"
+            />
+          ) : (
+            <div className="header__avatar-placeholder">
+              {getInitials(currentUser?.name || "Guest")}
+            </div>
+          )}
         </div>
       </Link>
     </header>

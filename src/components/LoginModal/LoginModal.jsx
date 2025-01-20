@@ -1,0 +1,46 @@
+import React, { useState } from "react";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import { signin } from "../../utils/auth.js";
+
+const LoginModal = ({ closeActiveModal, onLogin, activeModal }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onLogin({ email, password }); // Pass form data to the login handler
+  };
+
+  return (
+    <ModalWithForm
+      title="Sign In"
+      buttonText="Login"
+      isOpen={activeModal === "login"}
+      onClose={closeActiveModal}
+      onSubmit={handleSubmit}
+    >
+      <label className="modal__label">
+        Email
+        <input
+          type="email"
+          className="modal__input"
+          placeholder="Your email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </label>
+      <label className="modal__label">
+        Password
+        <input
+          type="password"
+          className="modal__input"
+          placeholder="Your password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      </label>
+    </ModalWithForm>
+  );
+};
+
+export default LoginModal;

@@ -1,30 +1,61 @@
 const baseUrl = "http://localhost:3001";
 
-function checkRes(response) {
+// Helper function to handle response
+export function checkRes(response) {
   if (!response.ok) {
     return Promise.reject(`Error: ${response.status}`);
   }
   return response.json();
 }
 
+// Helper function to include token in headers
+function getHeadersWithAuth(token) {
+  return {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
+  };
+}
+
+// Fetch clothing items (unprotected)
 function getItems(weatherType) {
   const query = weatherType ? `?weather_like=${weatherType}` : "";
   return fetch(`${baseUrl}/items${query}`).then(checkRes);
 }
 
-function postItem(item) {
+// Add a new clothing item (protected)
+function postItem(item, token) {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: getHeadersWithAuth(token),
     body: JSON.stringify(item),
   }).then(checkRes);
 }
 
-function deleteItem(itemId) {
+// Delete a clothing item (protected)
+function deleteItem(itemId, token) {
   console.log(`Deleting item with _id: ${itemId}`); // Debug log
   return fetch(`${baseUrl}/items/${itemId}`, {
     method: "DELETE",
+    headers: getHeadersWithAuth(token),
   }).then(checkRes);
 }
 
-export { getItems, deleteItem, postItem, checkRes };
+// Fetch user data (protected)
+function getUserData(token) {
+  return fetch(`${baseUrl}/users/me`, {
+    method: "GET",
+    headers: getHeadersWithAuth(token),
+  }).then(checkRes);
+}
+
+// Update user profile (protected)
+export const updateUser = (userData, token) => {
+  return fetch(`${baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: getHeadersWithAuth(token),
+    body: JSON.stringify(userData),
+  }).then(checkRes);
+};
+
+// Export all other functions
+export { getItems, postItem, deleteItem, getUserData };
