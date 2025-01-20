@@ -39,6 +39,7 @@ function Main({ weatherData, clothingItems, handleCardClick }) {
               key={item._id}
               item={item}
               onCardClick={handleCardClick}
+              onCardLike={handleCardLike} // Pass the like handler to ItemCard
             />
           ))}
         </ul>

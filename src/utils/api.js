@@ -57,5 +57,27 @@ export const updateUser = (userData, token) => {
   }).then(checkRes);
 };
 
+// Add a like to an item
+export const addCardLike = (id, token) => {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }).then(checkRes);
+};
+
+// Remove a like from an item
+export const removeCardLike = (id, token) => {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }).then(checkRes);
+};
+
 // Export all other functions
 export { getItems, postItem, deleteItem, getUserData };

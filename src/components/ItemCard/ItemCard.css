@@ -24,3 +24,21 @@
   border-radius: 19px;
   border: solid rgba(0, 0, 0, 0.3) 1px;
 }
+.card__like-button {
+  background-image: url("../../assets/ClearLike.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 18px;
+  height: 15px;
+  border: none;
+  cursor: pointer;
+  top: 15px;
+  margin-left: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card__like-button.liked {
+  background-image: url("../../assets/FilledLike.svg");
+}

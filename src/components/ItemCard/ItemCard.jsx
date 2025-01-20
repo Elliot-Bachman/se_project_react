@@ -1,6 +1,27 @@
 import "./ItemCard.css";
+import { useContext } from "react";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-function ItemCard({ item, onCardClick }) {
+function ItemCard({ item, onCardClick, onCardLike }) {
+  const currentUser = useContext(CurrentUserContext); // Access current user context
+
+  // Check if the user is logged in and if the item is liked
+  const isLiked =
+    currentUser && item.likes.some((id) => id === currentUser._id);
+
+  // Dynamically set the button className based on the like state
+  const itemLikeButtonClassName = `card__like-button ${
+    isLiked ? "card__like-button_liked" : ""
+  }`;
+
+  const handleLikeClick = () => {
+    if (currentUser) {
+      onCardLike(item); // Pass the full item object
+    } else {
+      alert("You must be logged in to like items.");
+    }
+  };
+
   const handleCardClick = () => {
     onCardClick(item);
   };
@@ -14,6 +35,15 @@ function ItemCard({ item, onCardClick }) {
         src={item.imageUrl}
         alt={item.name}
       />
+      {currentUser && ( // Render like button only if user is logged in
+        <button
+          type="button"
+          className={itemLikeButtonClassName}
+          onClick={handleLikeClick}
+        >
+          {isLiked ? "Unlike" : "Like"}
+        </button>
+      )}
     </li>
   );
 }

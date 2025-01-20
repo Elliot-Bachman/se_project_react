@@ -7,6 +7,7 @@ function Profile({
   clothingItems,
   handleDeleteItem,
   handleAddClick,
+  handleSignOut,
 }) {
   return (
     <div className="profile">

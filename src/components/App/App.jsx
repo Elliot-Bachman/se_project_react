@@ -14,6 +14,7 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import { getItems, deleteItem, postItem } from "../../utils/api";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import { signin, signup, checkToken } from "../../utils/auth";
+import { addCardLike, removeCardLike } from "../../utils/api";
 
 function App() {
   // State for user authentication and data
@@ -107,6 +108,43 @@ function App() {
       .catch(() => alert("Login failed. Please check your credentials."));
   };
 
+  // Function to handle liking/disliking an item
+  const handleCardLike = (item) => {
+    const token = localStorage.getItem("jwt");
+
+    if (!token) {
+      alert("You must be logged in to like items.");
+      return;
+    }
+
+    const isLiked = item.likes.includes(currentUser?._id); // Determine if item is already liked
+    const likeRequest = !isLiked
+      ? addCardLike(item._id, token)
+      : removeCardLike(item._id, token);
+
+    likeRequest
+      .then((updatedCard) => {
+        setClothingItems((items) =>
+          items.map((prevItem) =>
+            prevItem._id === item._id ? updatedCard : prevItem
+          )
+        );
+      })
+      .catch((err) => console.error("Error updating likes:", err));
+  };
+
+  const handleSignOut = () => {
+    // Remove the token from localStorage
+    localStorage.removeItem("jwt");
+
+    // Update the state
+    setIsLoggedIn(false);
+    setCurrentUser(null); // Clear current user data
+
+    // Optionally redirect the user
+    window.location.href = "/";
+  };
+
   // Load weather data on mount
   useEffect(() => {
     getWeather(coordinates, APIkey)
@@ -164,6 +202,7 @@ function App() {
                     handleCardClick={handleCardClick}
                     clothingItems={clothingItems}
                     handleAddClick={handleAddClick}
+                    handleSignOut={handleSignOut} // Pass the sign-out handler
                   />
                 }
               />
