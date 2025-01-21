@@ -22,6 +22,9 @@ function Main({ weatherData, clothingItems, handleCardClick }) {
     );
   });
 
+  // Debugging: Log the result of filtering
+  console.log("Filtered clothing items:", filteredItems);
+
   // Debugging: Log the filtered items
   console.log("Filtered Items:", filteredItems);
 

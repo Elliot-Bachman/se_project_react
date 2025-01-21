@@ -148,15 +148,28 @@ function App() {
   // Load weather data on mount
   useEffect(() => {
     getWeather(coordinates, APIkey)
-      .then((data) => setWeatherData(filterWeatherData(data)))
-      .catch(console.error);
+      .then((data) => {
+        console.log("Raw weather data from API:", data); // Log raw API response
+        const filteredData = filterWeatherData(data);
+        console.log("Filtered weather data:", filteredData); // Log processed weather data
+        setWeatherData(filteredData); // Update state
+      })
+      .catch((err) => {
+        console.error("Error fetching weather data:", err); // Log errors
+      });
   }, []);
 
   // Load clothing items on mount
   useEffect(() => {
     getItems()
-      .then((data) => setClothingItems(data.data))
-      .catch(console.error);
+      .then((data) => {
+        console.log("Fetched items from API:", data); // Log the raw API response
+        setClothingItems(data.data); // Update state
+        console.log("Clothing items state after update:", data.data); // Log updated state
+      })
+      .catch((err) => {
+        console.error("Error fetching items:", err); // Log errors
+      });
   }, []);
 
   // Validate token and fetch user data on mount
