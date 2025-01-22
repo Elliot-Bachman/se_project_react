@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import { coordinates, APIkey } from "../../utils/constants";
+
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import ItemModal from "../ItemModal/ItemModal";
 import Profile from "../Profile/Profile";
 import Footer from "../Footer/Footer";
+
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
@@ -44,7 +46,14 @@ function App() {
     setSelectedCard(card);
   };
 
-  const handleAddClick = () => setActiveModal("add-garment");
+  const handleAddClick = () => {
+    console.log("Setting activeModal to 'add-garment'");
+    setActiveModal("add-garment");
+    console.log(
+      "Current activeModal state (after setActiveModal):",
+      activeModal
+    );
+  };
 
   const closeActiveModal = () => setActiveModal("");
 
@@ -54,7 +63,7 @@ function App() {
 
   // Add new item
   const handleAddItemSubmit = (item) => {
-    const token = localStorage.getItem("jwt");
+    const token = localStorage.getItem("jwt"); // Get token from local storage
     const newItem = {
       name: item.name,
       imageUrl: item.link,
@@ -223,10 +232,15 @@ function App() {
             <Footer />
           </div>
           {activeModal === "add-garment" && (
-            <AddItemModal
-              closeActiveModal={closeActiveModal}
-              onAddItem={handleAddItemSubmit}
-            />
+            <>
+              {console.log("Rendering AddItemModal. Current activeModal:")}{" "}
+              {/* Debugging log */}
+              <AddItemModal
+                closeActiveModal={closeActiveModal}
+                onAddItem={handleAddItemSubmit}
+                activeModal={activeModal}
+              />
+            </>
           )}
           <ItemModal
             activeModal={activeModal}

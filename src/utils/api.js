@@ -26,7 +26,10 @@ function getItems(weatherType) {
 function postItem(item, token) {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
-    headers: getHeadersWithAuth(token),
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`, // Ensure token is included
+    },
     body: JSON.stringify(item),
   }).then(checkRes);
 }

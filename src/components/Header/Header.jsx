@@ -5,7 +5,9 @@ import logo from "../../assets/logo.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-function Header({ handleAddClick, weatherData }) {
+function Header({ handleAddClick, weatherData, activeModal }) {
+  console.log("Header Props:", { handleAddClick, weatherData, activeModal }); // Added log
+
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
