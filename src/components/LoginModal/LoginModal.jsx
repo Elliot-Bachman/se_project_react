@@ -8,7 +8,7 @@ const LoginModal = ({ closeActiveModal, onLogin, activeModal }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onLogin({ email, password }); // Pass form data to the login handler
+    onLogin({ email, password });
   };
 
   return (

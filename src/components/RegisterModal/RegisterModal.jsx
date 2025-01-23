@@ -1,29 +1,15 @@
 import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import { signup } from "../../utils/auth.js";
 
 const RegisterModal = ({ closeActiveModal, onRegister, activeModal }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [avatar, setAvatar] = useState(""); // Optional field for user avatar
-
-  const handleNameChange = (e) => setName(e.target.value);
-  const handleEmailChange = (e) => setEmail(e.target.value);
-  const handlePasswordChange = (e) => setPassword(e.target.value);
-  const handleAvatarChange = (e) => setAvatar(e.target.value);
+  const [avatar, setAvatar] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    signup({ name, avatar, email, password })
-      .then((data) => {
-        console.log("User successfully registered:", data);
-        closeActiveModal(); // Close the modal upon success
-      })
-      .catch((error) => {
-        console.error("Error during signup:", error);
-        alert(error); // Display error to the user
-      });
+    onRegister({ name, avatar, email, password });
   };
 
   return (
@@ -41,7 +27,7 @@ const RegisterModal = ({ closeActiveModal, onRegister, activeModal }) => {
           className="modal__input"
           placeholder="Your name"
           value={name}
-          onChange={handleNameChange}
+          onChange={(e) => setName(e.target.value)}
         />
       </label>
       <label className="modal__label">
@@ -51,7 +37,7 @@ const RegisterModal = ({ closeActiveModal, onRegister, activeModal }) => {
           className="modal__input"
           placeholder="Your email"
           value={email}
-          onChange={handleEmailChange}
+          onChange={(e) => setEmail(e.target.value)}
         />
       </label>
       <label className="modal__label">
@@ -61,7 +47,7 @@ const RegisterModal = ({ closeActiveModal, onRegister, activeModal }) => {
           className="modal__input"
           placeholder="Your password"
           value={password}
-          onChange={handlePasswordChange}
+          onChange={(e) => setPassword(e.target.value)}
         />
       </label>
       <label className="modal__label">
@@ -71,7 +57,7 @@ const RegisterModal = ({ closeActiveModal, onRegister, activeModal }) => {
           className="modal__input"
           placeholder="Avatar URL"
           value={avatar}
-          onChange={handleAvatarChange}
+          onChange={(e) => setAvatar(e.target.value)}
         />
       </label>
     </ModalWithForm>
