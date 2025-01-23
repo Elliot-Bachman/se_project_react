@@ -213,6 +213,7 @@ function App() {
             <>
               {console.log("Rendering RegisterModal")}
               <RegisterModal
+                onRegister={handleUserRegister}
                 closeActiveModal={closeActiveModal}
                 onSignup={handleUserRegister}
                 isOpen={activeModal === "sign-up"}
@@ -225,6 +226,7 @@ function App() {
               <AddItemModal
                 closeActiveModal={closeActiveModal}
                 onAddItem={handleAddItemSubmit}
+                activeModal={activeModal}
               />
             </>
           )}
@@ -232,7 +234,7 @@ function App() {
             <>
               {console.log("Rendering ItemModal")}
               <ItemModal
-                closeActiveModal={closeActiveModal}
+                onClose={closeActiveModal}
                 activeModal={activeModal}
                 card={selectedCard} // Pass the selected card to ItemModal
                 handleDeleteClick={handleDeleteItem} // Pass the delete handler
