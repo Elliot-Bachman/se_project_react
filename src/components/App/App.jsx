@@ -205,6 +205,7 @@ function App() {
               <LoginModal
                 closeActiveModal={closeActiveModal}
                 onLogin={handleUserLogin}
+                isOpen={activeModal === "login"}
               />
             </>
           )}
@@ -214,6 +215,7 @@ function App() {
               <RegisterModal
                 closeActiveModal={closeActiveModal}
                 onSignup={handleUserRegister}
+                isOpen={activeModal === "sign-up"}
               />
             </>
           )}

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { signin } from "../../utils/auth.js";
 
-const LoginModal = ({ closeActiveModal, onLogin, activeModal }) => {
+const LoginModal = ({ closeActiveModal, onLogin, isOpen }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -15,7 +15,7 @@ const LoginModal = ({ closeActiveModal, onLogin, activeModal }) => {
     <ModalWithForm
       title="Sign In"
       buttonText="Login"
-      isOpen={activeModal === "login"}
+      isOpen={isOpen}
       onClose={closeActiveModal}
       onSubmit={handleSubmit}
     >
