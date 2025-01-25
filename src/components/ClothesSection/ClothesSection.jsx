@@ -3,7 +3,12 @@ import { useContext } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import ItemCard from "../ItemCard/ItemCard";
 
-function ClothesSection({ handleAddClick, clothingItems, handleCardClick }) {
+function ClothesSection({
+  handleAddClick,
+  clothingItems,
+  handleCardClick,
+  handleCardLike,
+}) {
   // Subscribe to CurrentUserContext
   const currentUser = useContext(CurrentUserContext);
 
@@ -26,7 +31,12 @@ function ClothesSection({ handleAddClick, clothingItems, handleCardClick }) {
       </div>
       <ul className="clothes-section__items">
         {userItems.map((item) => (
-          <ItemCard key={item._id} item={item} onCardClick={handleCardClick} />
+          <ItemCard
+            key={item._id}
+            item={item}
+            onCardClick={handleCardClick}
+            onCardLike={handleCardLike}
+          />
         ))}
       </ul>
     </div>

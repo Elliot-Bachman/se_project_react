@@ -13,7 +13,7 @@ import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
-import { getItems, deleteItem, postItem } from "../../utils/api";
+import { getItems, deleteItem, postItem, updateUser } from "../../utils/api";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import { signin, signup, checkToken } from "../../utils/auth";
 import { addCardLike, removeCardLike } from "../../utils/api";
@@ -75,7 +75,7 @@ function App() {
 
     postItem(newItem, token)
       .then((savedItem) => {
-        setClothingItems([savedItem, ...clothingItems]);
+        setClothingItems([savedItem.data, ...clothingItems]);
         closeActiveModal();
       })
       .catch((error) => console.error("Error adding item:", error));
@@ -139,7 +139,7 @@ function App() {
       .then((updatedCard) => {
         setClothingItems((items) =>
           items.map((prevItem) =>
-            prevItem._id === item._id ? updatedCard : prevItem
+            prevItem._id === item._id ? updatedCard.data : prevItem
           )
         );
       })
@@ -150,6 +150,16 @@ function App() {
   const handleEditProfileClick = () => {
     console.log("Opening Edit Profile Modal");
     setActiveModal("edit-profile");
+  };
+
+  const handleEditProfileSubmit = (userData) => {
+    const token = localStorage.getItem("jwt");
+    updateUser(userData, token)
+      .then((updatedUser) => {
+        setCurrentUser(updatedUser);
+        closeActiveModal();
+      })
+      .catch((err) => console.error("Error updating user profile:", err));
   };
 
   // Function to handle signing out
@@ -258,6 +268,7 @@ function App() {
                   weatherData={weatherData}
                   clothingItems={clothingItems}
                   handleCardClick={handleCardClick}
+                  handleCardLike={handleCardLike}
                 />
               }
             />
@@ -271,6 +282,7 @@ function App() {
                   handleAddClick={handleAddClick}
                   handleSignOut={handleSignOut}
                   handleEditProfileClick={handleEditProfileClick}
+                  handleCardLike={handleCardLike}
                 />
               }
             />
@@ -278,7 +290,8 @@ function App() {
           {activeModal === "edit-profile" && (
             <EditProfileModal
               closeActiveModal={closeActiveModal}
-              updateUser={setCurrentUser}
+              updateUser={handleEditProfileSubmit}
+              activeModal={activeModal}
             />
           )}
           <Footer />
