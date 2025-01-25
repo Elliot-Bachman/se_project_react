@@ -62,7 +62,6 @@ const EditProfileModal = ({ onClose, updateUser, activeModal }) => {
           name="avatar"
           value={avatar}
           onChange={handleAvatarChange}
-          required
         />
       </label>
     </ModalWithForm>

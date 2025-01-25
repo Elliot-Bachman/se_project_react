@@ -116,6 +116,7 @@ function App() {
         localStorage.setItem("jwt", res.token);
         setIsLoggedIn(true);
         setCurrentUser(res.user);
+        console.log(res.user);
         closeActiveModal();
       })
       .catch(() => alert("Login failed. Please check your credentials."));
