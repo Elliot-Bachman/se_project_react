@@ -19,6 +19,7 @@ import { signin, signup, checkToken } from "../../utils/auth";
 import { addCardLike, removeCardLike } from "../../utils/api";
 import LoginModal from "../LoginModal/LoginModal.jsx";
 import RegisterModal from "../RegisterModal/RegisterModal.jsx";
+import EditProfileModal from "../EditProfileModal/EditProfileModal.jsx";
 
 function App() {
   // State for user authentication and data
@@ -145,6 +146,13 @@ function App() {
       .catch((err) => console.error("Error updating likes:", err));
   };
 
+  // Function to handle editing profile
+  const handleEditProfileClick = () => {
+    console.log("Opening Edit Profile Modal");
+    setActiveModal("edit-profile");
+  };
+
+  // Function to handle signing out
   const handleSignOut = () => {
     localStorage.removeItem("jwt");
     setIsLoggedIn(false);
@@ -262,10 +270,17 @@ function App() {
                   clothingItems={clothingItems}
                   handleAddClick={handleAddClick}
                   handleSignOut={handleSignOut}
+                  handleEditProfileClick={handleEditProfileClick}
                 />
               }
             />
           </Routes>
+          {activeModal === "edit-profile" && (
+            <EditProfileModal
+              closeActiveModal={closeActiveModal}
+              updateUser={setCurrentUser}
+            />
+          )}
           <Footer />
         </div>
       </CurrentTemperatureUnitContext.Provider>
