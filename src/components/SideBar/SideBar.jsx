@@ -8,18 +8,20 @@ function SideBar({ openSignOutModal, openProfileEditModal }) {
   const getInitials = (name) => (name ? name.charAt(0).toUpperCase() : "");
   return (
     <div className="sidebar">
-      {currentUser?.avatar ? (
-        <img
-          src={currentUser.avatar}
-          alt={currentUser?.name || "Guest"}
-          className="header__avatar"
-        />
-      ) : (
-        <div className="header__avatar-placeholder">
-          {getInitials(currentUser?.name || "Guest")}
-        </div>
-      )}
-      <p className="sidebar__username">{currentUser?.name}</p>
+      <div className="sidebar__user-info">
+        {currentUser?.avatar ? (
+          <img
+            src={currentUser.avatar}
+            alt={currentUser?.name || "Guest"}
+            className="sidebar__avatar"
+          />
+        ) : (
+          <div className="sidebar__avatar-placeholder">
+            {getInitials(currentUser?.name || "Guest")}
+          </div>
+        )}
+        <p className="sidebar__username">{currentUser?.name}</p>
+      </div>
       <button
         className="sidebar__button sidebar__button-edit"
         onClick={openProfileEditModal}
