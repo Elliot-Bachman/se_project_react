@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { signin } from "../../utils/auth.js";
+import "./LoginModal.css";
 
 const LoginModal = ({
   closeActiveModal,
