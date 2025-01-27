@@ -290,9 +290,10 @@ function App() {
           </Routes>
           {activeModal === "edit-profile" && (
             <EditProfileModal
-              closeActiveModal={closeActiveModal}
+              onClose={closeActiveModal}
               updateUser={handleEditProfileSubmit}
               activeModal={activeModal}
+              handleDeleteClick={handleDeleteItem}
             />
           )}
           <Footer />

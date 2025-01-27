@@ -5,6 +5,12 @@
   justify-content: center;
 }
 
+.card__info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .card__name {
   position: absolute;
   top: 18px;
