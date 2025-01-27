@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const RegisterModal = ({ closeActiveModal, onRegister, isOpen }) => {
+const RegisterModal = ({
+  closeActiveModal,
+  onRegister,
+  isOpen,
+  openLoginModal,
+}) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [avatar, setAvatar] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onRegister({ name, avatar, email, password });
+    onRegister({ name, email, password });
   };
 
   return (
@@ -50,16 +54,13 @@ const RegisterModal = ({ closeActiveModal, onRegister, isOpen }) => {
           onChange={(e) => setPassword(e.target.value)}
         />
       </label>
-      <label className="modal__label">
-        Avatar URL (optional)
-        <input
-          type="text"
-          className="modal__input"
-          placeholder="Avatar URL"
-          value={avatar}
-          onChange={(e) => setAvatar(e.target.value)}
-        />
-      </label>
+      <button
+        type="button"
+        onClick={openLoginModal}
+        className="modal__secondary-button"
+      >
+        or login
+      </button>
     </ModalWithForm>
   );
 };

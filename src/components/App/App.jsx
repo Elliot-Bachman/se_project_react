@@ -284,6 +284,7 @@ function App() {
                   handleSignOut={handleSignOut}
                   handleEditProfileClick={handleEditProfileClick}
                   handleCardLike={handleCardLike}
+                  handleDeleteClick={handleDeleteItem}
                 />
               }
             />

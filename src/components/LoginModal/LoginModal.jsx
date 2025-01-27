@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { signin } from "../../utils/auth.js";
 
-const LoginModal = ({ closeActiveModal, onLogin, isOpen }) => {
+const LoginModal = ({
+  closeActiveModal,
+  onLogin,
+  isOpen,
+  openRegisterModal,
+}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -39,6 +44,13 @@ const LoginModal = ({ closeActiveModal, onLogin, isOpen }) => {
           onChange={(e) => setPassword(e.target.value)}
         />
       </label>
+      <button
+        type="button"
+        onClick={openRegisterModal}
+        className="modal__secondary-button"
+      >
+        or sign up
+      </button>
     </ModalWithForm>
   );
 };
