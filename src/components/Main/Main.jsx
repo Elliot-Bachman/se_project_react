@@ -30,23 +30,25 @@ function Main({ weatherData, clothingItems, handleCardClick, handleCardLike }) {
 
   return (
     <main>
-      <WeatherCard weatherData={weatherData} />
-      <section className="cards">
-        <p className="cards__text">
-          Today is {weatherData.temp[currentTemperatureUnit]} &deg;{" "}
-          {currentTemperatureUnit}. You may want to wear:
-        </p>
-        <ul className="cards__list">
-          {filteredItems.map((item) => (
-            <ItemCard
-              key={item._id}
-              item={item}
-              onCardClick={handleCardClick}
-              onCardLike={handleCardLike} // Pass the like handler to ItemCard
-            />
-          ))}
-        </ul>
-      </section>
+      <div className="main__container">
+        <WeatherCard weatherData={weatherData} />
+        <section className="cards">
+          <p className="cards__text">
+            Today is {weatherData.temp[currentTemperatureUnit]} &deg;{" "}
+            {currentTemperatureUnit}. You may want to wear:
+          </p>
+          <ul className="cards__list">
+            {filteredItems.map((item) => (
+              <ItemCard
+                key={item._id}
+                item={item}
+                onCardClick={handleCardClick}
+                onCardLike={handleCardLike} // Pass the like handler to ItemCard
+              />
+            ))}
+          </ul>
+        </section>
+      </div>
     </main>
   );
 }
