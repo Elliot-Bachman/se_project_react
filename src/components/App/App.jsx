@@ -201,6 +201,8 @@ function App() {
           setIsLoggedIn(false);
           localStorage.removeItem("jwt");
         });
+    } else {
+      setIsLoggedIn(false); // user is not logged in.
     }
   }, []);
 
@@ -280,6 +282,7 @@ function App() {
               element={
                 <ProtectedRoute
                   component={Profile}
+                  isLoggedIn={isLoggedIn} // Pass isLoggedIn to ProtectedRoute
                   handleCardClick={handleCardClick}
                   clothingItems={clothingItems}
                   handleAddClick={handleAddClick}

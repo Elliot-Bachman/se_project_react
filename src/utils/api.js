@@ -1,12 +1,14 @@
 const baseUrl = "http://localhost:3001";
 
 // Helper function to handle response
-export function checkRes(response) {
-  if (!response.ok) {
-    return Promise.reject(`Error: ${response.status}`);
+export const checkRes = (res) => {
+  if (!res.ok) {
+    return res.json().then((data) => {
+      throw new Error(data.message || `Error: ${res.status}`);
+    });
   }
-  return response.json();
-}
+  return res.json();
+};
 
 // Helper function to include token in headers
 function getHeadersWithAuth(token) {
