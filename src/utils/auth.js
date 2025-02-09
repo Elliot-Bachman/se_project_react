@@ -1,6 +1,5 @@
 import { checkRes } from "./api";
-
-const BASE_URL = "http://localhost:3001"; // Replace with your backend URL if different
+import { BASE_URL } from "../utils/constants";
 
 // Function to handle user registration
 export const signup = ({ name, avatar, email, password }) => {

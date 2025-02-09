@@ -109,9 +109,16 @@ export const defaultClothingItems = [
   },
 ];
 
+const BASE_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://api.wtwr-demo.mindhackers.org"
+    : "http://localhost:3001";
+
 export const coordinates = {
   latitude: 45.09908,
   longitude: -94.41032,
 };
 
 export const APIkey = "faf5492d0f48068fc50ca58fbc1d893a";
+
+export { BASE_URL };
