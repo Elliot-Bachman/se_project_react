@@ -114,6 +114,8 @@ const BASE_URL =
     ? "https://api.wtwr-demo.mindhackers.org"
     : "http://localhost:3001";
 
+console.log("Current BASE_URL:", BASE_URL); // Debugging
+
 export const coordinates = {
   latitude: 45.09908,
   longitude: -94.41032,

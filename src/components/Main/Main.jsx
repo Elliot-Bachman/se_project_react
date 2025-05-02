@@ -7,14 +7,14 @@ import ItemCard from "../ItemCard/ItemCard";
 function Main({ weatherData, clothingItems, handleCardClick, handleCardLike }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
-  // Debugging: Log weatherData.type and clothing items
-  console.log("Weather Data Type:", weatherData.type);
-  console.log("Clothing Items:", clothingItems);
+  // Add detailed debugging logs
+  console.log("Main component - All clothing items:", clothingItems);
+  console.log("Main component - Weather data:", weatherData);
 
   // Filter items based on weather type
   const filteredItems = clothingItems.filter((item) => {
     console.log(
-      `Filtering item: ${item.name}, item.weather: ${item.weather}, weatherData.type: ${weatherData.type}`
+      `Filtering item: name=${item.name}, id=${item._id}, owner=${item.owner}, weather=${item.weather}, weatherType=${weatherData.type}`
     );
     return (
       item.weather &&
@@ -22,11 +22,7 @@ function Main({ weatherData, clothingItems, handleCardClick, handleCardLike }) {
     );
   });
 
-  // Debugging: Log the result of filtering
-  console.log("Filtered clothing items:", filteredItems);
-
-  // Debugging: Log the filtered items
-  console.log("Filtered Items:", filteredItems);
+  console.log("Main component - Filtered items:", filteredItems);
 
   return (
     <main>
@@ -43,7 +39,7 @@ function Main({ weatherData, clothingItems, handleCardClick, handleCardLike }) {
                 key={item._id}
                 item={item}
                 onCardClick={handleCardClick}
-                onCardLike={handleCardLike} // Pass the like handler to ItemCard
+                onCardLike={handleCardLike}
               />
             ))}
           </ul>

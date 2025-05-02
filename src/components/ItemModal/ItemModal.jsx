@@ -6,8 +6,20 @@ function ItemModal({ activeModal, onClose, card, handleDeleteClick }) {
   // Subscribe to the CurrentUserContext
   const currentUser = useContext(CurrentUserContext);
 
+  // Add detailed debugging logs
+  console.log("ItemModal - Selected card:", card);
+  console.log("ItemModal - Current user:", currentUser);
+
   // Check if the current user owns the selected card
   const isOwn = card?.owner === currentUser?._id;
+  console.log(
+    "ItemModal - Is own card:",
+    isOwn,
+    "card owner:",
+    card?.owner,
+    "current user id:",
+    currentUser?._id
+  );
 
   // Conditional className for delete button
   const itemDeleteButtonClassName = `modal__delete ${
@@ -34,7 +46,7 @@ function ItemModal({ activeModal, onClose, card, handleDeleteClick }) {
               Weather: {card?.weather || "Unknown"}
             </p>
           </div>
-          {isOwn && ( // Conditionally render the delete button
+          {isOwn && (
             <button
               type="button"
               className={itemDeleteButtonClassName}

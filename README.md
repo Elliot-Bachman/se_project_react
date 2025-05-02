@@ -1,59 +1,121 @@
-# React + Vite
+# WTWR (What to Wear?) - Frontend
 
-WTWR (What to Wear)
-Project Description
-WTWR (What to Wear) is a full-stack web application that helps users choose clothing based on the weather. Users can:
+## 🔗 Quick Links
 
-View weather-specific clothing recommendations.
-Add, update, and delete their clothing items.
-Like or unlike items to save preferences.
-Edit their profile, including updating their name and avatar.
-Register, log in, and manage their session securely.
-This project seamlessly integrates a React-based frontend with an Express.js backend to provide an interactive and user-friendly experience.
+- **Live Demo:** [https://wtwr-demo.mindhackers.org](https://wtwr-demo.mindhackers.org)
+- **Backend Repository:** [https://github.com/Elliot-Bachman/se_project_express](https://github.com/Elliot-Bachman/se_project_express)
+- **Video Demo:** [Watch on Google Drive](https://drive.google.com/file/d/1xbrzlk5z7OBeLd5K8E1Qhubxu76siqww/view?usp=drive_link)
 
-Technologies and Techniques
-This project employs modern web development technologies and best practices, including:
+## �� Table of Contents
 
-Frontend
-React: Component-based architecture for building the user interface.
-React Router: For managing client-side routing.
-Vite: For fast development and optimized builds.
-CSS: Responsive design and styling.
-Context API: For managing global state (e.g., current user, temperature unit).
-Fetch API: For handling asynchronous requests to the backend.
-Backend
-Express.js: RESTful API for handling business logic and database interactions.
-MongoDB: NoSQL database for storing user data, clothing items, and likes.
-JWT (JSON Web Tokens): Secure authentication and user session management.
-bcrypt: For password hashing.
-Other Techniques
-Token-Based Authentication: Protects routes and ensures secure access.
-Protected Routes: Restricts access to certain pages for authorized users only.
-Responsive Design: Ensures compatibility across different devices.
-How to Use
-Sign up to create an account.
-Log in to access personalized features.
-View weather-specific clothing recommendations.
-Add your clothing items to the database.
-Like and unlike clothing items.
-Edit your profile to update your name or avatar.
-Sign out to end your session securely.
-Backend Link
-The backend for this project is available on GitHub:
-WTWR Backend Repository
+1. [About](#about)
+2. [Features](#features)
+3. [Screenshots](#screenshots)
+4. [Technologies](#technologies)
+5. [Temperature Guidelines](#temperature-guidelines)
+6. [Installation](#installation)
+7. [Usage](#usage)
+8. [API Integration](#api-integration)
 
-The backend includes:
+## About
 
-RESTful API endpoints for managing user authentication, clothing items, and likes.
-MongoDB integration for data persistence.
+WTWR (What to Wear?) is a weather-based clothing recommendation app that helps users decide what to wear based on the current weather conditions. The app allows users to create their own wardrobe and get personalized clothing suggestions.
 
-Backend Link
-The backend for this project is available on GitHub:
-WTWR Backend Repository
+## Features
 
-https://github.com/Elliot-Bachman/se_project_express
+- 👤 User Authentication (Register/Login)
+- 🌤️ Real-time Weather Integration
+- 👕 Clothing Management (Add/Delete Items)
+- ❤️ Like/Unlike Clothing Items
+- 📱 Responsive Design
+- 🎨 Modern UI/UX
 
-The backend includes:
+## Screenshots
 
-RESTful API endpoints for managing user authentication, clothing items, and likes.
-MongoDB integration for data persistence.
+### Home Page
+
+![Home Page](screenshots/home-page.png)
+_Main dashboard showing current temperature and clothing suggestions_
+
+### Add New Garment
+
+![Add Garment Modal](screenshots/add-garment.png)
+_Modal for adding new clothing items with weather type selection_
+
+### Profile Page
+
+![Profile Page](screenshots/profile-page.png)
+_User profile showing personal clothing collection_
+
+## Technologies
+
+- React.js
+- React Router v6
+- Context API for State Management
+- CSS Modules
+- OpenWeather API Integration
+- JWT Authentication
+
+## Temperature Guidelines
+
+The app categorizes clothing based on temperature ranges:
+
+- **Hot Weather** (Above 86°F / 30°C)
+
+  - Recommended: Light, breathable clothing
+  - Example: T-shirts, shorts, sundresses
+
+- **Warm Weather** (66°F to 85°F / 19°C to 29°C)
+
+  - Recommended: Light layers
+  - Example: Light sweaters, long-sleeve shirts
+
+- **Cold Weather** (Below 66°F / 19°C)
+  - Recommended: Warm layers
+  - Example: Coats, sweaters, warm pants
+
+## Installation
+
+1. Clone the repository
+
+```bash
+git clone [your-repository-url]
+```
+
+2. Install dependencies
+
+```bash
+npm install
+```
+
+3. Create a .env file with required variables
+
+```env
+REACT_APP_API_URL=https://api.wtwr-demo.mindhackers.org
+REACT_APP_WEATHER_API_KEY=[your-weather-api-key]
+```
+
+4. Start the development server
+
+```bash
+npm run dev
+```
+
+## Usage
+
+- Register/Login to access your personal wardrobe
+- Add clothing items with weather type tags
+- View weather-appropriate clothing suggestions
+- Like/unlike items in your collection
+- Edit your profile information
+
+## API Integration
+
+The frontend integrates with:
+
+- Backend API for user and clothing data management
+- OpenWeather API for real-time weather information
+
+---
+
+Developed as part of the TripleTen Software Engineering Bootcamp
