@@ -6,7 +6,7 @@
 - **Backend Repository:** [https://github.com/Elliot-Bachman/se_project_express](https://github.com/Elliot-Bachman/se_project_express)
 - **Video Demo:** [Watch on Google Drive](https://drive.google.com/file/d/1xbrzlk5z7OBeLd5K8E1Qhubxu76siqww/view?usp=drive_link)
 
-## �� Table of Contents
+## 📑 Table of Contents
 
 1. [About](#about)
 2. [Features](#features)
@@ -34,17 +34,17 @@ WTWR (What to Wear?) is a weather-based clothing recommendation app that helps u
 
 ### Home Page
 
-![Home Page](screenshots/home-page.png)
+![Home Page](./screenshots/WTWR%20home%20page.gif)
 _Main dashboard showing current temperature and clothing suggestions_
 
 ### Add New Garment
 
-![Add Garment Modal](screenshots/add-garment.png)
+![Add Garment Modal](./screenshots/WTWR%20add%20clothes.gif)
 _Modal for adding new clothing items with weather type selection_
 
 ### Profile Page
 
-![Profile Page](screenshots/profile-page.png)
+![Profile Page](./screenshots/Profile%20and%20saved%20clothes%20WTWR.gif)
 _User profile showing personal clothing collection_
 
 ## Technologies
