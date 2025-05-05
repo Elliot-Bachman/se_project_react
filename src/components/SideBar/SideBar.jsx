@@ -9,11 +9,14 @@ function SideBar({ openSignOutModal, openProfileEditModal }) {
     <div className="sidebar">
       <div className="sidebar__user-info">
         {currentUser?.avatar ? (
-          <img
+          /* <img
             src={currentUser.avatar}
             alt={currentUser?.name || "Guest"}
             className="sidebar__avatar"
-          />
+          /> */
+          <div className="sidebar__avatar-placeholder">
+            {getInitials(currentUser?.name || "Guest")}
+          </div>
         ) : (
           <div className="sidebar__avatar-placeholder">
             {getInitials(currentUser?.name || "Guest")}
