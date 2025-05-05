@@ -57,6 +57,7 @@
   /* Remove background color and set text color */
   background-color: transparent;
   color: rgba(0, 0, 0, 1);
+  text-align: left;
 }
 
 .sidebar__button-logout {
