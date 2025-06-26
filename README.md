@@ -2,7 +2,7 @@
 
 ## 🔗 Quick Links
 
-- **Live Demo:** [https://wtwr-demo.mindhackers.org](https://wtwr-demo.mindhackers.org)
+- **Live Demo:** [https://wtwr-demo.mindhackers.org](https://what-to-wear-clothes.jumpingcrab.com/)
 - **Backend Repository:** [https://github.com/Elliot-Bachman/se_project_express](https://github.com/Elliot-Bachman/se_project_express)
 - **Video Demo:** [Watch on Google Drive](https://drive.google.com/file/d/1xbrzlk5z7OBeLd5K8E1Qhubxu76siqww/view?usp=drive_link)
 
